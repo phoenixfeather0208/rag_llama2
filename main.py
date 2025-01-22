@@ -13,8 +13,8 @@ documents = [
 ]
 
 embeddings = embedding_model.encode(documents)
-dimension = embedding_model.shape[1]
-index = faiss.indexFlatL2(dimension)
+dimension = embeddings.shape[1]
+index = faiss.IndexFlatL2(dimension)
 index.add(np.array(embeddings).astype("float32"))
 
 model_name = ""
