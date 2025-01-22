@@ -5,6 +5,9 @@ import numpy as np
 import requests
 import json
 
+with open("config.json", "r") as f:
+    config = json.load(f)
+
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 url = "http://localhost:11434/api/generate"
 
