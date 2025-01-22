@@ -23,7 +23,8 @@ dimension = embeddings.shape[1]
 
 # Using Pinecone Vector Database
 index_name = "pinecone"
-pc.delete_index(index_name)
+if pc.has_index(index_name):
+    pc.delete_index(index_name)
 pc.create_index(
     name=index_name,
     dimension=dimension,
