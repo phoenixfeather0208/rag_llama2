@@ -5,9 +5,6 @@ import numpy as np
 import requests
 import json
 
-with open("config.json", "r") as f:
-    config = json.load(f)
-
 embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
 url = "http://localhost:11434/api/generate"
 
@@ -20,6 +17,7 @@ documents = [
 
 embeddings = embedding_model.encode(documents)
 dimension = embeddings.shape[1]
+# Using Faiss Vector Database
 index = faiss.IndexFlatL2(dimension)
 index.add(np.array(embeddings).astype("float32"))
 
