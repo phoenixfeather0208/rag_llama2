@@ -1,6 +1,6 @@
 transformers
 faiss-cpu
-sentence_transformers
+sentence-transformers
 requests
 streamlit
 streamlit-chat
