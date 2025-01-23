@@ -5,3 +5,4 @@ requests
 streamlit
 streamlit-chat
 flask
+pinecone
