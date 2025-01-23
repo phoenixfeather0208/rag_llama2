@@ -10,6 +10,10 @@ with open("../config.json", "r") as f:
 pc = Pinecone(api_key=config["PINECONE_API_KEY"])
 url = "http://localhost:5000/chat"
 
+st.set_page_config(
+    page_title="ShiRui Info Tech",
+    page_icon="favicon.svg",  # Path to your favicon file
+)
 
 # Using Pinecone Vector Database
 index_name = "copmany"
@@ -23,19 +27,18 @@ for i, msg in enumerate(st.session_state["messages"]):
 
 def submit():
     user_query = st.session_state.input
+    st.session_state.input = ""
     st.session_state["messages"].append({"content": user_query, "is_user": True})
-    
+    st.session_state["messages"].append({"content": "Loading ...", "is_user": False})
     if user_query:
         resopnse = requests.post(url, json={"user_query": user_query})
-        
         if resopnse.status_code == 200:
             # Append bot's response (replace with your LLM or logic)
             bot_response = resopnse.json().get("response", "")
-            st.session_state["messages"].append({"content": bot_response, "is_user": False})
+            st.session_state["messages"][-1] = {"content": bot_response, "is_user": False}
         elif resopnse:
             bot_response = "Server is under struction for now. Please try again later."
-            st.session_state["messages"].append({"content": bot_response, "is_user": False})
-        
-    st.session_state.input = ""
+            st.session_state["messages"][-1] = {"content": bot_response, "is_user": False}
 
 user_query = st.text_input("You: ", "", key="input", placeholder="Type your message here...", on_change=submit)
+
