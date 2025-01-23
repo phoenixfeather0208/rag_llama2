@@ -2,3 +2,6 @@ transformers
 faiss-cpu
 sentence_transformers
 requests
+streamlit
+streamlit-chat
+flask
