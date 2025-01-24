@@ -11,5 +11,8 @@ ollama pull llama2
 3. Run this command
 
 ```python
-python main.py
+python exercise.py #add index and data to pinecone vector database
+cd chatbot
+python backend.py
+streamlit run frontend.py
 ```
