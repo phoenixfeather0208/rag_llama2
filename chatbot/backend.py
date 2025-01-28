@@ -66,7 +66,7 @@ def data():
     elif user_query:
         query_embedding = embedding_model.encode([user_query])
 
-        k = 5  # Number of documents to retrieve
+        k = 4  # Number of documents to retrieve
         results = index.query(namespace="pinecone",vector=query_embedding.tolist()[0], top_k=k, include_metadata=True)
         retrieved_docs = [documents[int(match['id'][3:]) - 1] for match in results["matches"]]
         context = "\n".join(retrieved_docs)
