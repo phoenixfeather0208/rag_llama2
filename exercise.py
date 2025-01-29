@@ -75,7 +75,6 @@ while True:
     }
 
     response = requests.post(url, json=payload)
-    # full_response = ""
     print("\n")
     if response.status_code == 200:
         for chunk in response.iter_lines(decode_unicode=True):
