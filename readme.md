@@ -16,4 +16,3 @@ cd chatbot
 python backend.py
 streamlit run frontend.py
 ```
-
